@@ -38,6 +38,5 @@ export default {
   }
   .el-header {
     height: 72px !important;
-    background-color: darkgray;
   }
 </style>

@@ -4,7 +4,7 @@
       <template slot="content">
         <el-row>
           <el-col :span="8">
-            <div style="height: 100%; width: 100%; border: 1px solid red;">a</div>
+            <div style="height: 100%; width: 100%; border: 1px solid red; box-shadow: blue 0 10px 5px;">a</div>
           </el-col>
         </el-row>
       </template>
