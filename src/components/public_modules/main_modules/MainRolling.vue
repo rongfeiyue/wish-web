@@ -1,7 +1,7 @@
 <template>
   <div class="main-rolling">
     <main-content title="已实现">
-      <template slot="content">
+      <template slot="content">sss
       </template>
     </main-content>
   </div>
