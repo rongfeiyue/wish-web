@@ -1,6 +1,6 @@
 <template>
   <div class="main-carousel">
-    <el-carousel trigger="click" height="320px">
+    <el-carousel trigger="click" height="320px" class="main-el-carousel">
       <el-carousel-item v-for="item in 4" :key="item" class="main-carousel-item">
         <h1>{{ item }}</h1>
       </el-carousel-item>
@@ -22,6 +22,9 @@ export default {
     }
     div:nth-child(2n+1) {
       background-color: darkgray;
+    }
+    .main-el-carousel {
+      overflow-y: hidden;
     }
   }
 </style>

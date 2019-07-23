@@ -37,11 +37,14 @@ export default {
     background-color: #fffbfb;
     .header-content {
       height: 40px;
-      padding: 16px 80px;
+      width: 1200px;
+      margin: 0 auto;
+      padding: 16px 0;
       .logo {
         width: 100px;
         height: 40px;
         border: 1px solid green;
+        box-sizing: border-box;
         @include layout-center
       }
       .search {

@@ -38,5 +38,19 @@ export default {
   }
   .el-header {
     height: 72px !important;
+    width: 100%;
+  }
+  .el-main {
+    width: 1200px;
+    margin: 0 auto;
+  }
+  .el-footer {
+    width: 100%;
+  }
+  .el-container {
+    width: 100%;
+  }
+  #main {
+    width: 100%;
   }
 </style>

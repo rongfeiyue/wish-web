@@ -41,7 +41,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .wish-main {
-    padding: 0 80px;
-  }
 </style>
