@@ -34,7 +34,6 @@ export default {
   .wish-header {
     width: 100%;
     height: 72px;
-    background-color: #fffbfb;
     .header-content {
       height: 40px;
       width: 1200px;

@@ -1,7 +1,7 @@
 <template>
   <div id="main">
     <el-container>
-      <el-header>
+      <el-header class="ppp_header">
         <p-header></p-header>
       </el-header>
       <el-main>
@@ -11,6 +11,7 @@
         <p-footer></p-footer>
       </el-footer>
     </el-container>
+    <el-backtop target=".ppp_header" :visibility-height="10"></el-backtop>
   </div>
 </template>
 
@@ -39,6 +40,7 @@ export default {
   .el-header {
     height: 72px !important;
     width: 100%;
+    box-shadow: 0 2px 16px 0 rgba(239, 232, 242, 0.7);
   }
   .el-main {
     width: 1200px;
