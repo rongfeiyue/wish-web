@@ -13,7 +13,7 @@
           </div>
         </el-col>
         <el-col :span="2">
-          <div class="login">
+          <div class="login" @click="goLogin">
             <img src="../../assets/icons/personal.png"/>
             <span>登录</span>
           </div>
@@ -25,7 +25,12 @@
 
 <script>
 export default {
-  name: 'wish-header'
+  name: 'wish-header',
+  methods: {
+    goLogin () {
+      this.$router.push({path: '/login'})
+    }
+  }
 }
 </script>
 

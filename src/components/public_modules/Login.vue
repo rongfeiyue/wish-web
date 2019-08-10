@@ -2,14 +2,20 @@
   <div id="login" class="login">
     <div class="login_cover">
       <div class="login_form">
-        <div class="title">
-          <p>River</p>
-        </div>
-        <div>
-          <input type="text">
-          <input type="password">
-          <button>登录</button>
-        </div>
+        <el-row style="text-align: center">
+          <el-col :span="24" class="title">
+            <p>River</p>
+          </el-col>
+          <el-col :span="24">
+            <el-input size="medium" v-model="loginForm.username" placeholder="请输入用户名" suffix-icon="el-icon-warning" class="username"></el-input>
+          </el-col>
+          <el-col :span="24">
+            <el-input size="medium" v-model="loginForm.password" type="password" placeholder="请输入密码" suffix-icon="el-icon-warning" class="password"></el-input>
+          </el-col>
+          <el-col :span="24">
+            <el-button @click="login" size="mini" class="button">登录</el-button>
+          </el-col>
+        </el-row>
       </div>
     </div>
   </div>
@@ -17,7 +23,30 @@
 
 <script>
 export default {
-  name: 'Login'
+  name: 'Login',
+  data () {
+    return {
+      loginForm: {
+        username: '',
+        password: ''
+      },
+      rules: {
+        username: [
+          { required: true, message: '请输入用户名', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' }
+        ]
+      }
+    }
+  },
+  methods: {
+    login () {
+      if (this.loginForm.username && this.loginForm.password) {
+        this.$router.push({path: '/'})
+      }
+    }
+  }
 }
 </script>
 
@@ -25,13 +54,6 @@ export default {
   .login {
     width: 100%;
     height: 100%;
-    min-width: 1000px;
-    z-index: -10;
-    zoom: 1;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    background: url("../../assets/images/timg.png") no-repeat center 0;
     .login_cover {
       width: 100%;
       height: 100%;
@@ -41,18 +63,35 @@ export default {
       justify-content: center;
       .login_form {
         width: 360px;
-        height: 500px;
+        height: 320px;
         border: rgba(208,181,245,0.7) 1px solid;
         box-shadow: 0 3px 10px rgba(0,0,0,.6);
         border-radius: 5px;
         div {
           width: 100%;
         }
-        .title {
-          height: 120px;
-          p {
-
+        .el-col {
+          height: 80px;
+          .el-input {
+            line-height: 80px;
           }
+          .el-form-item {
+            margin-bottom: 0;
+          }
+        }
+        .title {
+          p {
+            line-height: 80px;
+          }
+        }
+        .username {
+          width: 240px;
+        }
+        .password {
+          width: 240px;
+        }
+        .button {
+          width: 80px;
         }
       }
     }

@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="main" class="main">
     <el-container>
       <el-header class="ppp_header">
         <p-header></p-header>
@@ -11,7 +11,6 @@
         <p-footer></p-footer>
       </el-footer>
     </el-container>
-    <el-backtop target=".ppp_header" :visibility-height="10"></el-backtop>
   </div>
 </template>
 
