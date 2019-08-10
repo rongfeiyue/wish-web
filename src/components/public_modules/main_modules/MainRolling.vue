@@ -1,12 +1,16 @@
 <template>
-  <div class="main-rolling">
+  <div class="main_rolling">
     <main-content title="已实现">
       <template slot="content">
-        <div v-for="item in comeTrueList" v-bind:key="item.id" class="come_true_item">
-          <el-row>
-            <el-col><span class="title">{{item.title}}</span></el-col>
-            <el-col><span class="date">{{item.date}}</span></el-col>
-          </el-row>
+        <div class="come_true">
+          <el-scrollbar style="height: 450px;" wrap-class="come_true_list" :native="false">
+            <div v-for="item in comeTrueNum" v-bind:key="item" class="come_true_item">
+              <el-row>
+                <el-col><span class="title" @click="goDetail(item)">{{'第' + item + '条'}}</span></el-col>
+                <el-col><span class="date">{{'2019-08-10 10:26:0' + item}}</span></el-col>
+              </el-row>
+            </div>
+          </el-scrollbar>
         </div>
       </template>
     </main-content>
@@ -22,54 +26,46 @@ export default {
   },
   data () {
     return {
-      comeTrueList: [{
-        id: 1,
-        title: '第1个标题',
-        date: '2019-07-22 20:20:20'
-      }, {
-        id: 2,
-        title: '第2个标题',
-        date: '2019-07-22 20:20:20'
-      }, {
-        id: 3,
-        title: '第3个标题',
-        date: '2019-07-22 20:20:20'
-      }, {
-        id: 4,
-        title: '第4个标题',
-        date: '2019-07-22 20:20:20'
-      }, {
-        id: 5,
-        title: '第5个标题',
-        date: '2019-07-22 20:20:20'
-      }]
+      comeTrueNum: 10
+    }
+  },
+  methods: {
+    goDetail (id) {
+      this.$router.push({path: `/detail/${id}`})
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .main-rolling {
+  .main_rolling {
     width: 100%;
     height: 500px;
-    .come_true_item {
-      width: 100%;
-      border-bottom: 1px dashed gray;
-      height: 50px;
-      box-sizing: border-box;
-      margin: 20px 0;
-      .title {
-        height: 30px;
-        cursor: pointer;
-        line-height: 30px;
+    .come_true {
+      max-height: 450px;
+      overflow: hidden;
+      .come_true_list {
+        max-height: 300px;
       }
-      .title:hover {
-        color: #888;
-      }
-      .date {
-        float: right;
-        font-size: 12px;
-        color: #999;
+      .come_true_item {
+        width: 100%;
+        border-bottom: 1px dashed gray;
+        height: 50px;
+        box-sizing: border-box;
+        margin: 20px 0;
+        .title {
+          height: 30px;
+          cursor: pointer;
+          line-height: 30px;
+        }
+        .title:hover {
+          color: #888;
+        }
+        .date {
+          float: right;
+          font-size: 12px;
+          color: #999;
+        }
       }
     }
   }

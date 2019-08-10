@@ -1,11 +1,11 @@
 <template>
-  <div id="main" class="main">
+  <div id="common_component" class="common_component">
     <el-container>
-      <el-header class="ppp_header">
+      <el-header>
         <p-header></p-header>
       </el-header>
       <el-main>
-        <p-main></p-main>
+        <slot name="common_content"></slot>
       </el-main>
       <el-footer>
         <p-footer></p-footer>
@@ -15,22 +15,18 @@
 </template>
 
 <script>
-import Header from '../components/public_modules/Header'
-import Main from '../components/public_modules/Main'
-import Footer from '../components/public_modules/Footer'
+import Header from '../public_modules/Header'
+import Footer from '../public_modules/Footer'
 export default {
-  name: 'Main',
+  name: 'CommonComponent',
   components: {
     'p-header': Header,
-    'p-main': Main,
     'p-footer': Footer
   }
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
-<style>
+<style scoped>
   .el-header, .el-main, .el-footer {
     padding: 0;
     overflow-y: hidden;
@@ -51,7 +47,8 @@ export default {
   .el-container {
     width: 100%;
   }
-  #main {
+  #common_component {
     width: 100%;
+    background: white;
   }
 </style>

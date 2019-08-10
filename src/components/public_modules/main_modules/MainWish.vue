@@ -4,13 +4,13 @@
       <template slot="content">
         <el-row>
           <el-col :span="8">
-            <div style="height: 175px; width: 100%; border: 1px solid red;">a</div>
+            <div style="height: 175px; width: 100%; border: 1px solid red; box-sizing: border-box">a</div>
           </el-col>
           <el-col :span="8">
-            <div style="height: 175px; width: 100%; border: 1px solid red;">a</div>
+            <div style="height: 175px; width: 100%; border: 1px solid red; box-sizing: border-box">a</div>
           </el-col>
           <el-col :span="8">
-            <div style="height: 175px; width: 100%; border: 1px solid red;">a</div>
+            <div style="height: 175px; width: 100%; border: 1px solid red; box-sizing: border-box">a</div>
           </el-col>
         </el-row>
       </template>

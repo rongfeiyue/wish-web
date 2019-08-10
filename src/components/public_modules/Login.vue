@@ -75,9 +75,6 @@ export default {
           .el-input {
             line-height: 80px;
           }
-          .el-form-item {
-            margin-bottom: 0;
-          }
         }
         .title {
           p {
