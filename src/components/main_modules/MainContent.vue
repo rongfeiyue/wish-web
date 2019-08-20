@@ -31,14 +31,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "../../assets/css/common";
   .main-content {
-    width: 100%;
+    @include content;
     height: 100%;
-    border: 1px solid #e4e3e3;
-    box-sizing: border-box;
-    border-radius: 3px;
     padding: 20px;
-    background: white;
     .title {
       font-size: 24px;
       font-family: Microsoft YaHei;

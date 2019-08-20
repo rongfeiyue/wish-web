@@ -10,7 +10,7 @@
               </div>
             </el-col>
             <el-col :span="8">
-              <div class="common_right">
+              <div class="common_right">yunzhi
                 这里面放广告
               </div>
             </el-col>

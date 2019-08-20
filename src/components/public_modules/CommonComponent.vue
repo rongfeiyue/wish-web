@@ -6,7 +6,7 @@
       </el-header>
       <el-main>
         <div class="component_wrapper">
-          <el-scrollbar style="height: 100%;" :native="false">
+          <el-scrollbar style="height: inherit;" :native="false">
             <div class="concrete_content">
               <slot name="common_content"></slot>
             </div>
@@ -44,9 +44,11 @@ export default {
     background: white;
     .component_wrapper {
       height: 100%;
+      min-height: inherit;
       background: #F0F3F8;
       .concrete_content {
         width: 1200px;
+        height: inherit;
         margin: 10px auto;
       }
     }
@@ -57,12 +59,12 @@ export default {
     }
     .el-header {
       height: 60px !important;
-      width: 100%;
       box-shadow: 0 2px 4px rgba(0,0,0,.1);
       margin-bottom: 10px;
     }
     .el-main {
       height: 100%;
+      min-height: calc(100vh - 120px);
     }
     .el-footer {
       height: 50px !important;
