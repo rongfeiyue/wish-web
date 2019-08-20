@@ -1,6 +1,6 @@
 <template>
   <div class="main-wish">
-    <main-content title="许愿">
+    <main-content title="标题">
       <template slot="content">
         <el-row>
           <el-col :span="8">

@@ -24,6 +24,7 @@ export default {
   methods: {
     viewAll () {
       // TODO
+      this.$router.push({path: `/list/type1`})
     }
   }
 }
@@ -37,6 +38,7 @@ export default {
     box-sizing: border-box;
     border-radius: 3px;
     padding: 20px;
+    background: white;
     .title {
       font-size: 24px;
       font-family: Microsoft YaHei;

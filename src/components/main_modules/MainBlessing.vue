@@ -1,6 +1,6 @@
 <template>
   <div class="main-blessing">
-    <main-content title="祝福">
+    <main-content title="标题">
       <template slot="content">ss</template>
     </main-content>
   </div>

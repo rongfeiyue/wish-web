@@ -38,12 +38,14 @@ export default {
   @import '../../assets/css/common';
   .wish-header {
     width: 100%;
-    height: 72px;
+    height: 60px;
+    position: fixed;
     .header-content {
+      background: #fff;
       height: 40px;
       width: 1200px;
       margin: 0 auto;
-      padding: 16px 0;
+      padding: 10px 0;
       .logo {
         width: 100px;
         height: 40px;

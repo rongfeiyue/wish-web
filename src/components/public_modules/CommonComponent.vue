@@ -5,7 +5,13 @@
         <p-header></p-header>
       </el-header>
       <el-main>
-        <slot name="common_content"></slot>
+        <div class="component_wrapper">
+          <el-scrollbar style="height: 100%;" :native="false">
+            <div class="concrete_content">
+              <slot name="common_content"></slot>
+            </div>
+          </el-scrollbar>
+        </div>
       </el-main>
       <el-footer>
         <p-footer></p-footer>
@@ -15,8 +21,9 @@
 </template>
 
 <script>
-import Header from '../public_modules/Header'
-import Footer from '../public_modules/Footer'
+import Header from '../layout/Header'
+import Footer from '../layout/Footer'
+
 export default {
   name: 'CommonComponent',
   components: {
@@ -25,30 +32,40 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-  .el-header, .el-main, .el-footer {
-    padding: 0;
-    overflow-y: hidden;
+<style>
+  .el-scrollbar__wrap{
     overflow-x: hidden;
   }
-  .el-header {
-    height: 72px !important;
+</style>
+<style scoped lang="scss">
+  .common_component {
     width: 100%;
-    box-shadow: 0 2px 16px 0 rgba(239, 232, 242, 0.7);
-  }
-  .el-main {
-    width: 1200px;
-    margin: 0 auto;
-  }
-  .el-footer {
-    width: 100%;
-  }
-  .el-container {
-    width: 100%;
-  }
-  #common_component {
-    width: 100%;
+    height: 100%;
     background: white;
+    .component_wrapper {
+      height: 100%;
+      background: #F0F3F8;
+      .concrete_content {
+        width: 1200px;
+        margin: 10px auto;
+      }
+    }
+    .el-header, .el-main, .el-footer, .el-container {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+    }
+    .el-header {
+      height: 60px !important;
+      width: 100%;
+      box-shadow: 0 2px 4px rgba(0,0,0,.1);
+      margin-bottom: 10px;
+    }
+    .el-main {
+      height: 100%;
+    }
+    .el-footer {
+      height: 50px !important;
+    }
   }
 </style>

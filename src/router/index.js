@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '../components/public_modules/Main'
-import Login from '../components/public_modules/Login'
+import Main from '../components/Main'
+import Login from '../components/Login'
 import CommonDetail from '../components/public_modules/CommonDetail'
+import CommonList from '../components/public_modules/CommonList'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/detail/:id',
       name: 'detail',
       component: CommonDetail
+    },
+    {
+      path: '/list/:type',
+      name: 'list',
+      component: CommonList
     }
   ]
 })

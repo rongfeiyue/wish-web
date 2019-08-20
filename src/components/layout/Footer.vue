@@ -13,9 +13,9 @@ export default {
 <style lang="scss" scoped>
   .wish-footer {
     width: 100%;
-    height: 100%;
-    background-color: #efeeee;
+    height: 50px;
+    background-color: #E8E7E3;
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
   }
 </style>

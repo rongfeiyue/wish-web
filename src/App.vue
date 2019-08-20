@@ -12,11 +12,4 @@ export default {
 
 <style lang="scss">
   @import 'assets/css/reset';
-  body {
-    line-height: 1;
-    height: 100%;
-    background: url("assets/images/timg.png") no-repeat fixed;
-    background-size: cover;
-    opacity: 0.6;
-  }
 </style>

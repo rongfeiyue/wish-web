@@ -54,6 +54,7 @@ export default {
   .login {
     width: 100%;
     height: 100%;
+    background: #F0F3F8;
     .login_cover {
       width: 100%;
       height: 100%;

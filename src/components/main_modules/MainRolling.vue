@@ -1,9 +1,9 @@
 <template>
   <div class="main_rolling">
-    <main-content title="已实现">
+    <main-content title="标题">
       <template slot="content">
         <div class="come_true">
-          <el-scrollbar style="height: 450px;" wrap-class="come_true_list" :native="false">
+          <el-scrollbar style="height: 430px;" wrap-class="come_true_list" :native="false">
             <div v-for="item in comeTrueNum" v-bind:key="item" class="come_true_item">
               <el-row>
                 <el-col><span class="title" @click="goDetail(item)">{{'第' + item + '条'}}</span></el-col>
@@ -40,12 +40,12 @@ export default {
 <style lang="scss" scoped>
   .main_rolling {
     width: 100%;
-    height: 500px;
+    height: 490px;
     .come_true {
       max-height: 450px;
       overflow: hidden;
       .come_true_list {
-        max-height: 300px;
+        max-height: 200px;
       }
       .come_true_item {
         width: 100%;
