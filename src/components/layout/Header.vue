@@ -3,22 +3,25 @@
     <div class="header-content">
       <el-row>
         <el-col :span="2">
-          <div class="logo">
-            这有个logo
+          <div class="logo" @click="goRoot">
+            <!--<el-image style="width: 100px; height: 40px;" src="../../assets/images/logo.jpg"></el-image>-->
+            <img src="../../assets/images/logo.jpg" alt="" width="100" height="40">
           </div>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="6">
           <div class="menu">
             <el-breadcrumb separator-class="el-icon-arrow-right">
               <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item :to="{ path: '/list/type2' }">活动管理</el-breadcrumb-item>
-              <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+              <el-breadcrumb-item :to="{ path: '/list/type2' }">列表</el-breadcrumb-item>
+              <el-breadcrumb-item>详情</el-breadcrumb-item>
             </el-breadcrumb>
           </div>
         </el-col>
-        <el-col :span="12">
+        <el-col :span="14">
           <div class="search">
-            <div>这有个搜索</div>
+            <el-input placeholder="请输入内容" v-model="input3" style="width: 390px;">
+              <el-button slot="append" icon="el-icon-search"></el-button>
+            </el-input>
           </div>
         </el-col>
         <el-col :span="2">
@@ -38,6 +41,9 @@ export default {
   methods: {
     goLogin () {
       this.$router.push({path: '/login'})
+    },
+    goRoot () {
+      this.$router.push({path: '/'})
     }
   }
 }
@@ -47,8 +53,10 @@ export default {
   @import '../../assets/css/common';
   .wish-header {
     width: 100%;
-    height: 60px;
+    height: 62px;
     position: fixed;
+    @include content;
+    border-radius: 0;
     .header-content {
       background: #fff;
       height: 40px;
@@ -58,8 +66,7 @@ export default {
       .logo {
         width: 100px;
         height: 40px;
-        border: 1px solid green;
-        box-sizing: border-box;
+        cursor: pointer;
         @include layout-center
       }
       .menu {
@@ -69,10 +76,6 @@ export default {
       }
       .search {
         height: 40px;
-        @include layout-vertical;
-        div {
-          @include layout-center
-        }
       }
       .login {
         height: 40px;

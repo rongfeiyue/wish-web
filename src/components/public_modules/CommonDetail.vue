@@ -94,6 +94,7 @@
             </div>
           </el-col>
         </el-row>
+        <el-backtop target=".el-scrollbar__wrap"></el-backtop>
       </template>
     </common-component>
   </div>

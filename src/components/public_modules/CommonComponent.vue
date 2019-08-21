@@ -45,7 +45,7 @@ export default {
     .component_wrapper {
       height: 100%;
       min-height: inherit;
-      background: #F0F3F8;
+      background: #F5F6F7;
       .concrete_content {
         width: 1200px;
         height: inherit;
@@ -59,8 +59,7 @@ export default {
     }
     .el-header {
       height: 60px !important;
-      box-shadow: 0 2px 4px rgba(0,0,0,.1);
-      margin-bottom: 10px;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
     }
     .el-main {
       height: 100%;

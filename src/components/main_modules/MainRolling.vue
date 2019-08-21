@@ -3,7 +3,7 @@
     <main-content title="标题">
       <template slot="content">
         <div class="come_true">
-          <el-scrollbar style="height: 430px;" wrap-class="come_true_list" :native="false">
+          <el-scrollbar style="height: 430px; overflow-x: hidden;" wrap-class="come_true_list" :native="false">
             <div v-for="item in comeTrueNum" v-bind:key="item" class="come_true_item">
               <el-row>
                 <el-col><span class="title" @click="goDetail(item)">{{'第' + item + '条'}}</span></el-col>
@@ -36,7 +36,6 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
   .main_rolling {
     width: 100%;
