@@ -1,12 +1,40 @@
 $color-primary: #2b2b2b;
 $color-primary-hover: #5b5a5a;
 
+@mixin font-title-big {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'San Francisco', Helvetica, 'Microsoft YaHei', PingFangSC-Regular, sans-serif;;
+  color: $color-primary;
+}
+@mixin font-title {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'San Francisco', Helvetica, 'Microsoft YaHei', PingFangSC-Regular, sans-serif;;
+  color: $color-primary;
+  &:hover {
+    color: $color-primary-hover;
+    cursor: pointer;
+  }
+}
+@mixin font-content {
+  font-size: 16px;
+  font-family: 'San Francisco', Helvetica, 'Microsoft YaHei', PingFangSC-Regular, sans-serif;;
+  color: $color-primary;
+  font-weight: 400;
+  line-height: 26px;
+}
 @mixin font-normal {
   font-size: 14px;
   color: $color-primary;
+  &:hover {
+    font-size: 14px;
+    color: $color-primary-hover;
+  }
 }
-@mixin font-normal-hover {
-  font-size: 14px;
+
+@mixin font-small {
+  font-size: 12px;
   color: $color-primary-hover;
 }
 
@@ -26,4 +54,27 @@ $color-primary-hover: #5b5a5a;
   border-radius: 4px;
   width: 100%;
   background: white;
+}
+
+@mixin header-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+@mixin header-username {
+  height: 30px;
+  line-height: 30px;
+  color: #777;
+  font-size: 14px;
+}
+
+@mixin detail-link {
+  font-size: 12px;
+  color: #cecfd4;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: #157DCF;
+  }
 }

@@ -5,7 +5,9 @@
         <span class="title">{{title}}</span>
       </el-col>
       <el-col :span="12" style="text-align: right">
-        <span class="view-all" @click="viewAll">查看全部</span>
+        <span class="view-all" @click="viewAll">
+          <a>查看全部<i class="el-icon-caret-right"></i></a>
+        </span>
       </el-col>
     </el-row>
     <el-row>
@@ -41,13 +43,10 @@ export default {
       font-family: Microsoft YaHei;
     }
     .view-all {
-      font-size: 14px;
-      color: #9a9a9a;
-      cursor: pointer;
       text-align: right;
-    }
-    .view-all:hover {
-      color: #888;
+      a {
+        @include detail-link;
+      }
     }
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="wish-main">
     <common-component>
-      <template slot="common_content" style="height: 100%;">
+      <template slot="common_content">
         <div style="margin-bottom: 10px">
           <main-carousel></main-carousel>
         </div>
