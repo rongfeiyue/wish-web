@@ -4,6 +4,7 @@ import Main from '../components/Main'
 import Login from '../components/Login'
 import CommonDetail from '../components/public_modules/CommonDetail'
 import CommonList from '../components/public_modules/CommonList'
+import CommonEdit from '../components/public_modules/CommonEdit'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/list/:type',
       name: 'list',
       component: CommonList
+    },
+    {
+      path: '/edit',
+      name: 'edit',
+      component: CommonEdit
     }
   ]
 })

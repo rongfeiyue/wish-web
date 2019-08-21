@@ -19,7 +19,7 @@
         </el-col>
         <el-col :span="14">
           <div class="search">
-            <el-input placeholder="请输入内容" v-model="input3" style="width: 390px;">
+            <el-input placeholder="请输入内容" style="width: 390px;">
               <el-button slot="append" icon="el-icon-search"></el-button>
             </el-input>
           </div>
