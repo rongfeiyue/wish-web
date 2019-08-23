@@ -10,7 +10,7 @@
                   <el-image style="width: 60px; height: 60px; border-radius: 50%;" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></el-image>
                   <div style="padding-left: 10px;">
                     <div class="username">荣飞跃</div>
-                    <div class="join">2019-08-21 加入</div>
+                    <div class="join">2019-08-21 创作</div>
                   </div>
                 </div>
                 <el-divider>作者</el-divider>
@@ -20,12 +20,10 @@
           <el-col :span="12">
             <div style="margin-right: 10px;">
               <div class="detail-center">
-                <div class="title">
-                  鉴往知来——跟着总书记学历史｜革命历史带来的启示
-                </div>
+                <div class="title">{{article.title}}</div>
                 <el-divider></el-divider>
                 <div class="content">
-                  <mavon-editor :ishljs="true" @change="changeData" v-html="articleDetail" :defaultOpen="defaultOpen" :subfield="false" :toolbarsFlag="false" :boxShadow="false" />
+                  <mavon-editor :ishljs="true" @change="changeData" v-html="article.content" :defaultOpen="defaultOpen" :subfield="false" :toolbarsFlag="false" :boxShadow="false" />
                 </div>
               </div>
             </div>
@@ -43,6 +41,8 @@
 
 <script>
 import CommonComponent from './CommonComponent'
+import { getDetail } from '../../base/api'
+
 export default {
   name: 'CommonDetail',
   components: {
@@ -50,14 +50,29 @@ export default {
   },
   data () {
     return {
-      articleDetail: '<h1><a id="sdfsd_0"></a>sdfsd</h1>',
+      article: {
+        id: '',
+        title: '',
+        content: '',
+        owner: ''
+      },
       defaultOpen: 'preview'
     }
+  },
+  mounted () {
+    let params = this.$route.params
+    getDetail(params.type, params.id).then(res => {
+      this.article = res
+    })
   },
   methods: {
     changeData (value, render) {
       console.log(render)
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    document.title = to.meta.title
+    next()
   }
 }
 </script>

@@ -13,7 +13,7 @@
                       <div class="header_username">荣飞跃</div>
                     </div>
                     <div class="detail_content">
-                      <p @click="goDetail(i)">这块应该放一个标题</p>
+                      <p @click="goDetail(2, i)">这块应该放一个标题</p>
                     </div>
                     <div class="detail_footer">
                       <p>2019-08-21 12:39</p>
@@ -49,8 +49,8 @@ export default {
     }
   },
   methods: {
-    goDetail (id) {
-      this.$router.push({path: `/detail/${id}`})
+    goDetail (type, id) {
+      this.$router.push({path: `/${type}/detail/${id}`})
     }
   }
 }
