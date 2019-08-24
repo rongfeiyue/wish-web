@@ -47,7 +47,7 @@ export default {
       min-height: inherit;
       background: #F5F6F7;
       .concrete_content {
-        width: 1200px;
+        width: 1000px;
         height: inherit;
         margin: 10px auto;
       }

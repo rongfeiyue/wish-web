@@ -28,7 +28,8 @@
               </div>
             </el-col>
             <el-col :span="8">
-              <div class="list_right" style="height: 500px;">
+              <div class="list_right">
+                <login-register></login-register>
               </div>
             </el-col>
           </el-row>
@@ -40,9 +41,13 @@
 
 <script>
 import CommonComponent from './CommonComponent'
+import LoginRegister from './LoginRegister'
 export default {
   name: 'CommonList',
-  components: {CommonComponent},
+  components: {
+    CommonComponent,
+    LoginRegister
+  },
   data () {
     return {
       count: 10

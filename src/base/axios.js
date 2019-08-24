@@ -1,32 +1,44 @@
 import axios from 'axios'
+import router from '../router'
+import { Loading } from 'element-ui'
 
 const service = axios.create({
   timeout: 3000 // 超时时间
 })
 
+let loading = null
+
 // request拦截器
 service.interceptors.request.use(config => {
+  // 登录信息
+  loading = Loading.service({
+    lock: true,
+    fullscreen: true,
+    text: 'Loading...',
+    spinner: 'el-icon-loading',
+    background: 'rgba(0, 0, 0, 0.7)'
+  })
   return config
 }, error => {
-  Promise.reject(error)
+  loading.close()
+  return Promise.reject(error)
 })
 
 // response拦截器
 service.interceptors.response.use(res => {
+  loading.close()
   let result = res.data
-  console.log('--------------')
-  console.log(result)
   if (result.code === 200) {
     return result.data
   } else {
-    console.log('error')
-    // window.location.href = '/Error'
+    router.replace({path: '/Error'})
   }
 }, error => {
+  loading.close()
   if (error.response.status === 404) {
-    // window.location.href = '/NotFound'
+    window.location.href = '/NotFound'
   } else {
-    // window.location.href = '/Error'
+    window.location.href = '/Error'
   }
 })
 

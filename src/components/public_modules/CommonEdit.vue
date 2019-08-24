@@ -1,7 +1,9 @@
 <template>
   <div class="common-edit">
-    <div style="width: 100%; height: 40px;"></div>
-    <mavon-editor v-model="content" :ishljs = "true" :toolbars="toolbars" @change="handleChange"/>
+    <div style="width: 100%; height: 40px;">
+
+    </div>
+    <mavon-editor v-model="article.content" :ishljs = "true" :toolbars="toolbars" @change="handleChange"/>
   </div>
 </template>
 
@@ -10,7 +12,10 @@ export default {
   name: 'CommonEdit',
   data () {
     return {
-      content: '',
+      article: {
+        title: '',
+        content: ''
+      },
       toolbars: {
         bold: true, // 粗体
         italic: true, // 斜体

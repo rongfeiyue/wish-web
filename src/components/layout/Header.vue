@@ -53,16 +53,16 @@ export default {
   @import '../../assets/css/common';
   .wish-header {
     width: 100%;
-    height: 62px;
+    height: 60px;
     position: fixed;
     @include content;
-    border-radius: 0;
+    border-radius: 0 !important;
     .header-content {
       background: #fff;
       height: 40px;
-      width: 1200px;
+      width: 1000px;
       margin: 0 auto;
-      padding: 10px 0;
+      padding: 9px 0;
       .logo {
         width: 100px;
         height: 40px;

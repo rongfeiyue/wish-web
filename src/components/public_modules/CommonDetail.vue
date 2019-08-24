@@ -17,19 +17,13 @@
               </div>
             </div>
           </el-col>
-          <el-col :span="12">
-            <div style="margin-right: 10px;">
-              <div class="detail-center">
-                <div class="title">{{article.title}}</div>
-                <el-divider></el-divider>
-                <div class="content">
-                  <mavon-editor :ishljs="true" @change="changeData" v-html="article.content" :defaultOpen="defaultOpen" :subfield="false" :toolbarsFlag="false" :boxShadow="false" />
-                </div>
+          <el-col :span="18">
+            <div class="detail-center">
+              <div class="title">{{article.title}}</div>
+              <el-divider></el-divider>
+              <div class="content">
+                <mavon-editor :ishljs="true" @change="changeData" v-html="article.content" :defaultOpen="defaultOpen" :subfield="false" :toolbarsFlag="false" :boxShadow="false" />
               </div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div class="detail_right">
             </div>
           </el-col>
         </el-row>
@@ -108,11 +102,6 @@ export default {
       .content {
         @include font-content;
       }
-    }
-    .detail_right {
-      @include content;
-      height: 500px;
-      padding: 20px;
     }
   }
 </style>
