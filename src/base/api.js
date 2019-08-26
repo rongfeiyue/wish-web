@@ -10,3 +10,7 @@ export const getDetail = (type, id) => {
 export const submitArticle = (params) => {
   return post(`${baseApi}/a/submit`, params)
 }
+
+export const listArticle = (params) => {
+  return post(`${baseApi}/a/list`, params)
+}

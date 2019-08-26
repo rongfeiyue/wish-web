@@ -6,14 +6,14 @@
           <el-row>
             <el-col :span="16">
               <div style="margin-right: 10px;">
-                <div class="list_detail" v-for="i in count" v-bind:key="i">
+                <div class="list_detail" v-for="item in result.list" v-bind:key="item.id">
                   <div style="padding: 20px;">
                     <div class="detail_header">
                       <el-image style="width: 30px; height: 30px; border-radius: 50%;" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></el-image>
-                      <div class="header_username">荣飞跃</div>
+                      <div class="header_username">{{item.owner}}</div>
                     </div>
                     <div class="detail_content">
-                      <p @click="goDetail(2, i)">这块应该放一个标题</p>
+                      <p @click="goDetail(2, item.id)">{{item.title}}</p>
                     </div>
                     <div class="detail_footer">
                       <p>2019-08-21 12:39</p>
@@ -42,20 +42,39 @@
 <script>
 import CommonComponent from './CommonComponent'
 import LoginRegister from './LoginRegister'
+import { listArticle } from '../../base/api'
 export default {
   name: 'CommonList',
   components: {
     CommonComponent,
     LoginRegister
   },
+  mounted () {
+    this.getList()
+  },
   data () {
     return {
-      count: 10
+      params: {
+        type: '1',
+        status: '1',
+        page: 1,
+        rows: 10
+      },
+      result: {
+        count: 10,
+        list: []
+      }
     }
   },
   methods: {
     goDetail (type, id) {
-      this.$router.push({path: `/${type}/detail/${id}`})
+      this.$router.push({path: `/a/${id}`})
+    },
+    getList () {
+      listArticle(this.params).then(res => {
+        this.result.count = res.count
+        this.result.list = res.list
+      })
     }
   }
 }

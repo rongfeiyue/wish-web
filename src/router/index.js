@@ -24,7 +24,7 @@ export default new Router({
       component: Login
     },
     {
-      path: '/:type/detail/:id',
+      path: '/a/:id',
       name: 'detail',
       component: CommonDetail,
       meta: {
