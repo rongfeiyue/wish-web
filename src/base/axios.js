@@ -30,6 +30,8 @@ service.interceptors.response.use(res => {
   let result = res.data
   if (result.code === 200) {
     return result.data
+  } else if (result.code === 404) {
+    router.replace({path: '/NotFound'})
   } else {
     router.replace({path: '/Error'})
   }

@@ -1,20 +1,31 @@
 <template>
   <div class="common-edit">
-    <div style="width: 100%; height: 40px;">
-
+    <div class="edit-title">
+      <el-row style="line-height: 58px;">
+        <el-col :span="20">
+          <el-input v-model="article.title" placeholder="请输入标题" style="margin-left: 20px; width: 90%;"></el-input>
+        </el-col>
+        <el-col :span="4">
+          <el-button type="primary" @click="handleSubmit">提&nbsp;&nbsp;交</el-button>
+        </el-col>
+      </el-row>
     </div>
-    <mavon-editor v-model="article.content" :ishljs = "true" :toolbars="toolbars" @change="handleChange"/>
+    <div class="edit-editor">
+      <mavon-editor v-model="article.renderContent" :ishljs = "true" :toolbars="toolbars" @change="handleChange"/>
+    </div>
   </div>
 </template>
 
 <script>
+import { submitArticle } from '../../base/api'
 export default {
   name: 'CommonEdit',
   data () {
     return {
       article: {
         title: '',
-        content: ''
+        content: '',
+        renderContent: ''
       },
       toolbars: {
         bold: true, // 粗体
@@ -32,7 +43,7 @@ export default {
         imagelink: false, // 图片链接
         code: true, // code
         table: true, // 表格
-        fullscreen: true, // 全屏编辑
+        fullscreen: false, // 全屏编辑
         readmodel: true, // 沉浸式阅读
         htmlcode: true, // 展示html源码
         help: true, // 帮助
@@ -55,7 +66,14 @@ export default {
   },
   methods: {
     handleChange (value, render) {
-      console.log(render)
+      this.article.content = render
+    },
+    handleSubmit () {
+      if (this.article.title && this.article.content) {
+        submitArticle(this.article).then(res => {
+          this.$router.push({path: `/list/type`})
+        })
+      }
     }
   }
 }
@@ -69,8 +87,21 @@ export default {
   }
 </style>
 <style scoped lang="scss">
+  @import '../../assets/css/common';
   .common-edit {
     width: 100%;
     height: 100%;
+    .edit-title {
+      width: 100%;
+      height: 60px;
+      position: fixed;
+      top: 0;
+      z-index: 1501;
+      background: white;
+      @include content;
+    }
+    .edit-editor {
+      margin-top: 60px;
+    }
   }
 </style>

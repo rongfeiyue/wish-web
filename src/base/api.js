@@ -1,8 +1,12 @@
-import {get} from './axios'
+import {get, post} from './axios'
 
-let baseApi = 'https://www.easy-mock.com/mock/5d5f93efa68da00ea817a11e/wishes'
+let baseApi = 'http://localhost:8888'
 
 // 查看详情
 export const getDetail = (type, id) => {
-  return get(`${baseApi}/${type}/detail/${id}`)
+  return get(`${baseApi}/a/${id}`)
+}
+
+export const submitArticle = (params) => {
+  return post(`${baseApi}/a/submit`, params)
 }
