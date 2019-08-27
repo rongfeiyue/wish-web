@@ -4,7 +4,7 @@
       <el-col :span="12">
         <span class="title">{{title}}</span>
       </el-col>
-      <el-col :span="12" style="text-align: right">
+      <el-col :span="12" style="text-align: right" v-if="showAll">
         <span class="view-all" @click="viewAll">
           <a>查看全部<i class="el-icon-caret-right"></i></a>
         </span>
@@ -21,7 +21,11 @@ export default {
   name: 'main-content',
   props: {
     title: String,
-    moreUrl: String
+    moreUrl: String,
+    showAll: {
+      type: Boolean,
+      default: true
+    }
   },
   methods: {
     viewAll () {

@@ -2,6 +2,7 @@
   <div id="common_detail" class="common_detail">
     <common-component>
       <template slot="common_content">
+        <el-page-header @back="goBack"></el-page-header>
         <el-row style="margin-top: 10px;">
           <el-col :span="6">
             <div style="margin-right: 10px;">
@@ -14,6 +15,12 @@
                   </div>
                 </div>
                 <el-divider>作者</el-divider>
+              </div>
+              <div class="detail-left" style="padding: 20px; margin-top: 10px;">
+                <div style="height: 300px;">1</div>
+              </div>
+              <div class="detail-left" style="padding: 20px; margin-top: 10px;">
+                <div style="height: 300px;">1</div>
               </div>
             </div>
           </el-col>
@@ -62,11 +69,10 @@ export default {
   methods: {
     changeData (value, render) {
       console.log(render)
+    },
+    goBack () {
+      this.$router.go(-1)
     }
-  },
-  beforeRouteEnter (to, from, next) {
-    document.title = to.meta.title
-    next()
   }
 }
 </script>
@@ -75,6 +81,9 @@ export default {
   @import '../../assets/css/common';
   .common_detail {
     height: 100%;
+    .el-page-header:hover {
+      color: #615dff;
+    }
     .detail-left {
       @include content;
       .title {

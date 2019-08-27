@@ -1,7 +1,7 @@
 <template>
   <div class="main-blessing">
-    <main-content title="标题">
-      <template slot="content">ss</template>
+    <main-content title="今日活跃" :show-all="false">
+      <template slot="content"></template>
     </main-content>
   </div>
 </template>
@@ -19,6 +19,6 @@ export default {
 <style lang="scss" scoped>
   .main-blessing {
     width: 100%;
-    height: 240px;
+    height: 300px;
   }
 </style>

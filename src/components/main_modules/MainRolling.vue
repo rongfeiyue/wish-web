@@ -1,14 +1,15 @@
 <template>
   <div class="main_rolling">
-    <main-content title="标题">
+    <main-content title="最新">
       <template slot="content">
         <div class="come_true">
-          <el-scrollbar style="height: 430px; overflow-x: hidden;" wrap-class="come_true_list" :native="false">
-            <div v-for="item in comeTrueNum" v-bind:key="item" class="come_true_item">
+          <el-scrollbar style="height: 550px; overflow-x: hidden;" wrap-class="come_true_list" :native="false">
+            <div v-for="item in list" v-bind:key="item.id" class="come_true_item">
               <el-row>
-                <el-col><span class="title" @click="goDetail(item)">{{'第' + item + '条'}}</span></el-col>
-                <el-col><span class="date">{{'2019-08-10 10:26:0' + item}}</span></el-col>
+                <el-col><span class="title" @click="goDetail(item.id)">{{item.title}}</span></el-col>
+                <el-col><span class="date">{{item.createTime}}</span></el-col>
               </el-row>
+              <el-divider></el-divider>
             </div>
           </el-scrollbar>
         </div>
@@ -19,6 +20,8 @@
 
 <script>
 import MainContent from './MainContent'
+import { listArticle } from '../../base/api'
+
 export default {
   name: 'main-rolling',
   components: {
@@ -26,12 +29,20 @@ export default {
   },
   data () {
     return {
-      comeTrueNum: 10
+      list: []
     }
+  },
+  mounted () {
+    listArticle({
+      page: 1,
+      rows: 10
+    }).then(res => {
+      this.list = res.list
+    })
   },
   methods: {
     goDetail (id) {
-      this.$router.push({path: `/detail/${id}`})
+      this.$router.push({path: `/a/${id}`})
     }
   }
 }
@@ -39,18 +50,16 @@ export default {
 <style lang="scss" scoped>
   .main_rolling {
     width: 100%;
-    height: 490px;
+    height: 610px;
     .come_true {
-      max-height: 450px;
+      max-height: 570px;
       overflow: hidden;
       .come_true_list {
         max-height: 200px;
       }
       .come_true_item {
         width: 100%;
-        border-bottom: 1px dashed gray;
-        height: 50px;
-        box-sizing: border-box;
+        /*height: 50px;*/
         margin: 20px 0;
         .title {
           height: 30px;

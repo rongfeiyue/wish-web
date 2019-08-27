@@ -23,6 +23,7 @@
             </el-col>
           </el-row>
         </div>
+        <el-backtop target=".el-scrollbar__wrap"></el-backtop>
       </template>
     </common-component>
   </div>
