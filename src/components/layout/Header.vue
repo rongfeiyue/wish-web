@@ -30,7 +30,7 @@
             <span>登录</span>
           </div>
           <div class="user_info" v-if="userInfo.id != ''">
-            <el-button type="primary" size="small" style="margin-right: 20px;">写一篇</el-button>
+            <el-button type="primary" size="small" style="margin-right: 20px;" @click="write">写一篇</el-button>
             <el-avatar size="medium" :src="userInfo.avatar"></el-avatar>
             <div class="username">
 <!--              <span :title="userInfo.username">{{userInfo.username | subString(3)}}</span>-->
@@ -72,6 +72,9 @@ export default {
     },
     goRoot () {
       this.$router.push({path: '/'})
+    },
+    write () {
+      this.$router.push({path: '/edit'})
     },
     handleCommand (command) {
       switch (command) {

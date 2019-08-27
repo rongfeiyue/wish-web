@@ -71,7 +71,7 @@ export default {
     handleSubmit () {
       if (this.article.title && this.article.content) {
         submitArticle(this.article).then(res => {
-          this.$router.push({path: `/list/type`})
+          this.$router.go(-1)
         })
       }
     }
