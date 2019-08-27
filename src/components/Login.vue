@@ -22,6 +22,9 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
+import {login} from '../base/api'
+
 export default {
   name: 'Login',
   data () {
@@ -41,9 +44,27 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'setUserInfo'
+    ]),
     login () {
       if (this.loginForm.username && this.loginForm.password) {
+        this.setUserInfo({
+          id: '123',
+          username: 'rongfeiyue',
+          nickname: '荣飞跃',
+          avatar: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+        })
         this.$router.push({path: '/'})
+        /*login({
+          username: this.loginForm.username,
+          password: this.loginForm.password
+        }).then(res => {
+          this.setUserInfo(res)
+          this.$router.push({path: '/'})
+        }).catch(e => {
+          alert(e)
+        })*/
       }
     }
   }

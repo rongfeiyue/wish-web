@@ -8,9 +8,12 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import MavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import Vuex from 'vuex'
+import store from './store/index'
 
 Vue.use(ElementUI)
 Vue.use(MavonEditor)
+Vue.use(Vuex)
 
 Vue.config.productionTip = false
 
@@ -23,6 +26,7 @@ for (let f in filters) {
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

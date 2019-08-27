@@ -10,7 +10,6 @@
         </el-col>
         <el-col :span="4">
           <div class="menu">
-            <div>s</div>
             <el-breadcrumb separator-class="el-icon-arrow-right">
               <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
               <el-breadcrumb-item :to="{ path: '/list/type2' }">列表</el-breadcrumb-item>
@@ -18,22 +17,32 @@
             </el-breadcrumb>
           </div>
         </el-col>
-        <el-col :span="15">
+        <el-col :span="13">
           <div class="search">
             <el-input placeholder="请输入内容" style="width: 390px;">
               <el-button slot="append" icon="el-icon-search"></el-button>
             </el-input>
           </div>
         </el-col>
-        <el-col :span="3">
-          <div class="login" @click="goLogin" v-if="userInfo.userId == ''">
-            <img src="../../assets/icons/personal.png" v-if="userInfo.userId == ''"/>
+        <el-col :span="5">
+          <div class="login" @click="goLogin" v-if="userInfo.id == ''">
+            <img src="../../assets/icons/personal.png" v-if="userInfo.id == ''"/>
             <span>登录</span>
           </div>
-          <div class="user_info" v-if="userInfo.userId != ''">
-            <el-avatar :size="medium" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></el-avatar>
+          <div class="user_info" v-if="userInfo.id != ''">
+            <el-button type="primary" size="small" style="margin-right: 20px;">写一篇</el-button>
+            <el-avatar size="medium" :src="userInfo.avatar"></el-avatar>
             <div class="username">
-              <span :title="userInfo.username">{{userInfo.username | subString(3)}}</span></div>
+<!--              <span :title="userInfo.username">{{userInfo.username | subString(3)}}</span>-->
+              <el-dropdown @command="handleCommand">
+                <span class="el-dropdown-link" :title="userInfo.nickname">{{userInfo.nickname | subString(3)}}<i class="el-icon-arrow-down el-icon--right"></i></span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item command="myArticle">我的文章</el-dropdown-item>
+                  <el-dropdown-item command="setting">设置</el-dropdown-item>
+                  <el-dropdown-item command="logout">退出</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </div>
           </div>
         </el-col>
       </el-row>
@@ -42,22 +51,46 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
 export default {
   name: 'wish-header',
   data () {
     return {
-      userInfo: {
-        username: '荣飞跃少时诵诗书所',
-        userId: '123'
-      }
     }
   },
+  computed: {
+    ...mapGetters([
+      'userInfo'
+    ])
+  },
   methods: {
+    ...mapActions([
+      'setUserInfo'
+    ]),
     goLogin () {
       this.$router.push({path: '/login'})
     },
     goRoot () {
       this.$router.push({path: '/'})
+    },
+    handleCommand (command) {
+      switch (command) {
+        case 'logout':
+          this.$confirm('确认退出？')
+            .then(_ => {
+              // TODO
+              this.setUserInfo({
+                id: '',
+                username: '',
+                nickname: '',
+                avatar: ''
+              })
+            })
+            .catch(_ => {})
+          break
+        default:
+          break
+      }
     }
   }
 }
@@ -88,8 +121,7 @@ export default {
       .login {
         cursor: pointer;
         float: right;
-        display: flex;
-        align-items: center;
+        @include layout-center;
         img {
           width: 30px;
           height: 30px;
