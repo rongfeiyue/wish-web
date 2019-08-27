@@ -49,22 +49,24 @@ export default {
     ]),
     login () {
       if (this.loginForm.username && this.loginForm.password) {
-        this.setUserInfo({
-          id: '123',
-          username: 'rongfeiyue',
-          nickname: '荣飞跃',
-          avatar: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-        })
-        this.$router.push({path: '/'})
-        /*login({
+        login({
           username: this.loginForm.username,
           password: this.loginForm.password
         }).then(res => {
-          this.setUserInfo(res)
-          this.$router.push({path: '/'})
+          if (res) {
+            this.$message({
+              message: '登录成功',
+              type: 'success',
+              duration: '1000'
+            })
+            this.setUserInfo(res)
+            this.$router.push({path: '/'})
+          } else {
+            this.$message('用户名或密码错误')
+          }
         }).catch(e => {
           alert(e)
-        })*/
+        })
       }
     }
   }

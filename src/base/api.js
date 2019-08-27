@@ -1,6 +1,6 @@
 import {get, post} from './axios'
 
-let baseApi = 'http://localhost:8888'
+let baseApi = '/api'
 
 // 查看详情
 export const getDetail = (type, id) => {

@@ -86,6 +86,9 @@ export default {
   @import '../../assets/css/common';
   .common_list {
     height: 100%;
+    .el-page-header:hover {
+      color: #615dff;
+    }
     .list_detail {
       @include content;
       margin-bottom: 10px;

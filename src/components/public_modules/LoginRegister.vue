@@ -1,10 +1,10 @@
 <template>
   <div id="loginAndRegister" class="loginAndRegister">
     <div class="content">
-      <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="登录" name="first">登录</el-tab-pane>
-        <el-tab-pane label="注册" name="second">注册</el-tab-pane>
-      </el-tabs>
+<!--      <el-tabs v-model="activeName" @tab-click="handleClick">-->
+<!--        <el-tab-pane label="登录" name="first">登录</el-tab-pane>-->
+<!--        <el-tab-pane label="注册" name="second">注册</el-tab-pane>-->
+<!--      </el-tabs>-->
     </div>
   </div>
 </template>
