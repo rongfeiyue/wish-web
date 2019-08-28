@@ -37,9 +37,9 @@
               <el-dropdown @command="handleCommand">
                 <span class="el-dropdown-link" :title="userInfo.nickname">{{userInfo.nickname | subString(3)}}<i class="el-icon-arrow-down el-icon--right"></i></span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item command="myArticle">我的文章</el-dropdown-item>
-                  <el-dropdown-item command="setting">设置</el-dropdown-item>
-                  <el-dropdown-item command="logout">退出</el-dropdown-item>
+                  <el-dropdown-item command="myArticle"><i class="el-icon-user-solid"></i>我的文章</el-dropdown-item>
+                  <el-dropdown-item command="setting"><i class="el-icon-setting"></i>设置</el-dropdown-item>
+                  <el-dropdown-item command="logout"><i class="el-icon-bicycle"></i>退出</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </div>

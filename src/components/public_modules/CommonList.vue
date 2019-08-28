@@ -118,7 +118,7 @@ export default {
       }
     }
     .list_detail:hover {
-      border: 1px solid #615dff;
+      border: 1px solid #3B99FC;
     }
     .list_right {
       @include content;
