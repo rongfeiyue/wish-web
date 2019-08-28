@@ -31,7 +31,7 @@
           </div>
           <div class="user_info" v-if="userInfo.id != ''">
             <el-button type="primary" size="small" style="margin-right: 20px;" @click="write">写一篇</el-button>
-            <el-avatar size="medium" :src="userInfo.avatar"></el-avatar>
+            <el-avatar size="medium" :src="avatar" icon="el-icon-user-solid" style="box-shadow: 0 1px 2px rgba(0, 0, 0, .12)"></el-avatar>
             <div class="username">
 <!--              <span :title="userInfo.username">{{userInfo.username | subString(3)}}</span>-->
               <el-dropdown @command="handleCommand">
@@ -61,7 +61,13 @@ export default {
   computed: {
     ...mapGetters([
       'userInfo'
-    ])
+    ]),
+    avatar () {
+      if (this.userInfo.id) {
+        return `/api/p/${this.userInfo.id}`
+      }
+      return ''
+    }
   },
   methods: {
     ...mapActions([

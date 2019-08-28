@@ -1,7 +1,7 @@
 const User = {
   state: {
     userInfo: {
-      id: '',
+      id: '123',
       username: '',
       nickname: '',
       avatar: ''

@@ -7,6 +7,7 @@ import CommonList from '../components/public_modules/CommonList'
 import CommonEdit from '../components/public_modules/CommonEdit'
 import NotFound from '../components/public_modules/NotFound'
 import Error from '../components/public_modules/Error'
+import Setting from '../components/user/Setting'
 
 Vue.use(Router)
 
@@ -55,6 +56,14 @@ export default new Router({
       component: Error,
       meta: {
         title: '错误页面'
+      }
+    },
+    {
+      path: '/u/setting',
+      name: 'Setting',
+      component: Setting,
+      meta: {
+        title: '设置'
       }
     },
     {
