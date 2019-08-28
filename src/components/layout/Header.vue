@@ -97,6 +97,9 @@ export default {
             })
             .catch(_ => {})
           break
+        case 'setting':
+          this.$router.push({path: '/u/setting'})
+          break
         default:
           break
       }
