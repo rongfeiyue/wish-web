@@ -9,14 +9,15 @@
               <div class="list_detail" v-for="item in result.list" v-bind:key="item.id">
                 <div style="padding: 20px;">
                   <div class="detail_header">
-                    <el-image style="width: 30px; height: 30px; border-radius: 50%;" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></el-image>
-                    <div class="header_username">{{item.owner}}</div>
+<!--                    <el-image style="width: 30px; height: 30px; border-radius: 50%;" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></el-image>-->
+                    <el-avatar size="small" :src="getAvatar(item.owner)" icon="el-icon-user-solid" style="box-shadow: 0 1px 2px rgba(0, 0, 0, .12)"></el-avatar>
+                    <div class="header_username">{{item.ownerName}}</div>
                   </div>
                   <div class="detail_content">
                     <p @click="goDetail(2, item.id)">{{item.title}}</p>
                   </div>
                   <div class="detail_footer">
-                    <p>{{item.createTime}}</p>
+                    <p>{{item.time}}</p>
                   </div>
                 </div>
               </div>
@@ -77,6 +78,9 @@ export default {
     },
     goBack () {
       this.$router.go(-1)
+    },
+    getAvatar (userId) {
+      return `/api/p/${userId}`
     }
   }
 }

@@ -104,7 +104,7 @@ export default {
     }
     .detail-center {
       @include content;
-      padding: 20px;
+      padding: 30px;
       .title {
         @include font-title-big;
       }

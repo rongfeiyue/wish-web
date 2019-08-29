@@ -1,15 +1,16 @@
+import lodash from 'lodash'
 const User = {
   state: {
     userInfo: {
-      id: '123',
+      id: '',
       username: '',
       nickname: '',
-      avatar: ''
+      phone: ''
     }
   },
   mutations: {
     SET_USER_INFO: (state, data) => {
-      state.userInfo = data
+      state.userInfo = lodash.cloneDeep(data)
     }
   },
   actions: {

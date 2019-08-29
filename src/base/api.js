@@ -20,3 +20,7 @@ export const listArticle = (params) => {
 export const login = (params) => {
   return post(`${baseApi}/u/login`, params)
 }
+
+export const saveUser = (params) => {
+  return post(`${baseApi}/u/save`, params)
+}

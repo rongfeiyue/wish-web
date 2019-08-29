@@ -8,36 +8,36 @@
             <el-row>
               <el-col :span="24">
                 <p class="info-title">个人信息</p>
-                <el-divider></el-divider>
               </el-col>
               <el-col :span="24">
-                <div class="info-avatar">
-                  <el-upload
-                    class="avatar-uploader"
-                    ref="upload"
-                    :action="uploadUrl"
-                    :show-file-list="false"
-                    :on-success="handleAvatarSuccess"
-                    :before-upload="beforeAvatarUpload"
-                    :on-remove="handleRemove">
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                  </el-upload>
-                  <el-button @click="chooseFile" type="primary" icon="el-icon-edit" style="margin-left: 20px;" size="small" round>修改头像</el-button>
-                </div>
-                <el-divider></el-divider>
+                <el-collapse>
+                  <el-collapse-item title="头像">
+                    <div class="info-avatar">
+                      <el-upload
+                        class="avatar-uploader"
+                        :action="uploadUrl"
+                        :show-file-list="false"
+                        :on-success="handleAvatarSuccess"
+                        :before-upload="beforeAvatarUpload">
+                        <img v-if="showImage" :src="imageUrl" class="avatar choose">
+                        <i v-else class="el-icon-plus avatar-uploader-icon choose"></i>
+                      </el-upload>
+                      <el-button v-if="showImage" @click="chooseFile" type="primary" icon="el-icon-edit" style="margin-left: 20px;" size="small" round>修改头像</el-button>
+                    </div>
+                  </el-collapse-item>
+                  <el-collapse-item title="用户名">
+                    <el-input v-model="userEditInfo.username" placeholder="请输入用户名"></el-input>
+                  </el-collapse-item>
+                  <el-collapse-item title="昵称">
+                    <el-input v-model="userEditInfo.nickname" placeholder="请输入昵称"></el-input>
+                  </el-collapse-item>
+                  <el-collapse-item title="手机号">
+                    <el-input v-model="userEditInfo.phone" placeholder="请输入手机号"></el-input>
+                  </el-collapse-item>
+                </el-collapse>
               </el-col>
               <el-col :span="24">
-                用户名
-                <el-divider></el-divider>
-              </el-col>
-              <el-col :span="24">
-                昵称
-                <el-divider></el-divider>
-              </el-col>
-              <el-col :span="24">
-                手机号
-                <el-divider></el-divider>
+                <el-button v-show="showSave" @click="saveUserInfo" type="primary" size="medium" round style="margin-top: 30px;">保存</el-button>
               </el-col>
             </el-row>
           </div>
@@ -49,7 +49,9 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import lodash from 'lodash'
 import CommonComponent from '../public_modules/CommonComponent'
+import {saveUser} from '../../base/api'
 export default {
   name: 'Setting',
   components: {
@@ -57,26 +59,51 @@ export default {
   },
   data () {
     return {
-      imageUrl: ''
+      imageUrl: '',
+      showImage: false,
+      userEditInfo: {},
+      userEditInfoBak: {},
+      showSave: false
+    }
+  },
+  watch: {
+    userEditInfo: {
+      handler: function (data) {
+        console.log('data', data)
+        console.log('bak', this.userEditInfoBak)
+        if (!lodash.isEqual(data, this.userEditInfoBak)) {
+          this.showSave = true
+        } else {
+          this.showSave = false
+        }
+      },
+      deep: true
     }
   },
   mounted () {
-    this.imageUrl = `/api/p/${this.userInfo.id}`
+    if (this.userInfo.id) {
+      this.showImage = true
+      this.imageUrl = `/api/p/${this.userInfo.id}`
+      this.userEditInfo = lodash.cloneDeep(this.userInfo)
+      this.userEditInfoBak = lodash.cloneDeep(this.userInfo)
+    }
   },
   computed: {
     ...mapGetters([
       'userInfo'
     ]),
     uploadUrl () {
-      return `/api/p/upload/${this.userInfo.id}`
+      if (this.userInfo.id) {
+        return `/api/p/upload/${this.userInfo.id}`
+      } else {
+        return ''
+      }
     }
   },
   methods: {
-    handleRemove () {},
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw)
-      console.log(res)
-      console.log(file)
+      this.showImage = true
     },
     beforeAvatarUpload (file) {
       const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png')
@@ -94,8 +121,16 @@ export default {
       this.$router.go(-1)
     },
     chooseFile () {
-      console.log(this.$refs)
-      this.$refs.upload.submit()
+      document.querySelector('.el-upload__input').click()
+    },
+    saveUserInfo () {
+      saveUser(this.userEditInfo).then(res => {
+        this.$message({
+          message: '保存成功',
+          type: 'success',
+          duration: '1000'
+        })
+      })
     }
   }
 }
@@ -112,9 +147,10 @@ export default {
       margin-top: 10px;
       @include content;
       .edit-info {
-        padding: 20px;
+        padding: 30px;
         .info-title {
-          @include font-title-big
+          @include font-title-big;
+          margin-bottom: 30px;
         }
         .info-avatar {
           @include layout-center

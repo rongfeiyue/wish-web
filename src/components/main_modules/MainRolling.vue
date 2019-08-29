@@ -7,7 +7,7 @@
             <div v-for="item in list" v-bind:key="item.id" class="come_true_item">
               <el-row>
                 <el-col><span class="title" @click="goDetail(item.id)">{{item.title}}</span></el-col>
-                <el-col><span class="date">{{item.createTime}}</span></el-col>
+                <el-col><span class="date">{{item.time}}</span></el-col>
               </el-row>
               <el-divider></el-divider>
             </div>

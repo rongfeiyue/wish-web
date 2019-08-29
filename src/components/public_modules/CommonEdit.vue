@@ -66,6 +66,7 @@ export default {
   },
   methods: {
     handleChange (value, render) {
+      console.log(value)
       this.article.content = render
     },
     handleSubmit () {

@@ -24,6 +24,7 @@
 <script>
 import {mapActions} from 'vuex'
 import {login} from '../base/api'
+import {UserInfo} from '../vo/UserInfo'
 
 export default {
   name: 'Login',
@@ -59,7 +60,7 @@ export default {
               type: 'success',
               duration: '1000'
             })
-            this.setUserInfo(res)
+            this.setUserInfo(new UserInfo().set(res))
             this.$router.push({path: '/'})
           } else {
             this.$message('用户名或密码错误')
