@@ -21,7 +21,7 @@
 <script>
 import MainContent from './MainContent'
 import { listArticle } from '../../base/api'
-
+import {mapGetters} from 'vuex'
 export default {
   name: 'main-rolling',
   components: {
@@ -32,10 +32,16 @@ export default {
       list: []
     }
   },
+  computed: {
+    ...mapGetters([
+      'userInfo'
+    ])
+  },
   mounted () {
     listArticle({
       page: 1,
-      rows: 10
+      rows: 10,
+      owner: this.userInfo.id
     }).then(res => {
       this.list = res.list
     })

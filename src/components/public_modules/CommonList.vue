@@ -43,14 +43,20 @@
 import CommonComponent from './CommonComponent'
 import LoginRegister from './LoginRegister'
 import { listArticle } from '../../base/api'
+import {mapGetters} from 'vuex'
 export default {
   name: 'CommonList',
   components: {
     CommonComponent,
     LoginRegister
   },
-  mounted () {
+  created () {
     this.getList()
+  },
+  computed: {
+    ...mapGetters([
+      'userInfo'
+    ])
   },
   data () {
     return {

@@ -2,7 +2,7 @@ import lodash from 'lodash'
 const User = {
   state: {
     userInfo: {
-      id: '',
+      id: '1',
       username: '',
       nickname: '',
       phone: ''

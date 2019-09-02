@@ -10,7 +10,6 @@ let loading = null
 
 // request拦截器
 service.interceptors.request.use(config => {
-  // 登录信息
   loading = Loading.service({
     lock: true,
     fullscreen: true,

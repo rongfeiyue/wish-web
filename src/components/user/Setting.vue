@@ -26,13 +26,13 @@
                     </div>
                   </el-collapse-item>
                   <el-collapse-item title="用户名">
-                    <el-input v-model="userEditInfo.username" placeholder="请输入用户名"></el-input>
+                    <el-input v-model="userEditInfo.username" placeholder="请输入用户名" :disabled="true"></el-input>
                   </el-collapse-item>
                   <el-collapse-item title="昵称">
                     <el-input v-model="userEditInfo.nickname" placeholder="请输入昵称"></el-input>
                   </el-collapse-item>
                   <el-collapse-item title="手机号">
-                    <el-input v-model="userEditInfo.phone" placeholder="请输入手机号"></el-input>
+                    <el-input v-model="userEditInfo.phone" placeholder="请输入手机号" maxlength="11" show-word-limit oninput="value=value.replace(/[^\d]/g,'')"></el-input>
                   </el-collapse-item>
                 </el-collapse>
               </el-col>
@@ -48,10 +48,11 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 import lodash from 'lodash'
 import CommonComponent from '../public_modules/CommonComponent'
 import {saveUser} from '../../base/api'
+import {UserInfo} from '../../vo/UserInfo'
 export default {
   name: 'Setting',
   components: {
@@ -69,8 +70,6 @@ export default {
   watch: {
     userEditInfo: {
       handler: function (data) {
-        console.log('data', data)
-        console.log('bak', this.userEditInfoBak)
         if (!lodash.isEqual(data, this.userEditInfoBak)) {
           this.showSave = true
         } else {
@@ -101,9 +100,14 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'setUserInfo'
+    ]),
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw)
       this.showImage = true
+      this.setUserInfo(new UserInfo().set(this.userEditInfoBak))
+      console.log('there')
     },
     beforeAvatarUpload (file) {
       const isJPG = (file.type === 'image/jpeg' || file.type === 'image/png')
@@ -124,12 +128,16 @@ export default {
       document.querySelector('.el-upload__input').click()
     },
     saveUserInfo () {
+      debugger
       saveUser(this.userEditInfo).then(res => {
         this.$message({
           message: '保存成功',
           type: 'success',
           duration: '1000'
         })
+        this.userEditInfoBak = lodash.cloneDeep(this.userEditInfo)
+        this.userEditInfo = lodash.cloneDeep(this.userEditInfoBak)
+        this.setUserInfo(new UserInfo().set(this.userEditInfo))
       })
     }
   }

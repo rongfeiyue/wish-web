@@ -26,7 +26,10 @@
           </el-col>
           <el-col :span="18">
             <div class="detail-center">
-              <div class="title">{{article.title}}</div>
+              <div>
+                <p class="title">{{article.title}}</p>
+                <div>编辑</div>
+              </div>
               <el-divider></el-divider>
               <div class="content">
                 <mavon-editor :ishljs="true" @change="changeData" v-html="article.content" :defaultOpen="defaultOpen" :subfield="false" :toolbarsFlag="false" :boxShadow="false" />
